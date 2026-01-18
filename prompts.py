@@ -1,13 +1,3 @@
-"""
-prompts.py
-
-Contains all prompt templates and contracts that govern
-how the AI travel agent reasons, uses tools, and formats output.
-"""
-
-# --------------------------------------------------
-# 1. System Identity Prompt
-# --------------------------------------------------
 
 SYSTEM_PROMPT = """
 You are an AI-powered travel planning assistant.
@@ -22,9 +12,6 @@ You must:
 - Avoid unnecessary assumptions
 """
 
-# --------------------------------------------------
-# 2. Reasoning Instructions
-# --------------------------------------------------
 
 REASONING_PROMPT = """
 Follow this step-by-step reasoning process:
@@ -43,9 +30,7 @@ Follow this step-by-step reasoning process:
 6. Combine all gathered information to produce a complete itinerary.
 """
 
-# --------------------------------------------------
-# 3. Tool Usage Rules
-# --------------------------------------------------
+
 
 TOOL_USAGE_PROMPT = """
 Tool usage rules:
@@ -57,12 +42,10 @@ Tool usage rules:
 - Each tool should be used only for its intended purpose.
 """
 
-# --------------------------------------------------
-# 4. Output Format Contract
-# --------------------------------------------------
+
 
 OUTPUT_FORMAT_PROMPT = """
-TReturn the final travel plan in the following format:
+Return the final travel plan in the following format:
 
 Day 1:
 - activity 1
