@@ -47,37 +47,52 @@ Tool usage rules:
 
 
 OUTPUT_FORMAT_PROMPT = """
-Return the final travel plan in the following format:
+Output rules — BULLET POINTS ONLY:
 
-Day 1:
-- activity 1
-- activity 2
+1) Output must contain only bullet points.
+   - Each line must start with '- ' or '• '.
+   - No paragraphs, no JSON, no code blocks, no explanations.
 
-Day 2:
-- activity 1
-- activity 2
+2) Structure (use indentation with two spaces for sub-bullets):
 
-Day 3:
-- activity 1
-- activity 2
+- Summary: 1–2 concise sentences describing the trip focus and pace.
+- Day-by-day plan:
+  - Day 1 (YYYY-MM-DD): short theme or focus
+    - Activity or place (include transport or meals where relevant)
+  - Day 2 (YYYY-MM-DD): ...
+  - Repeat for all days
+- Budget (USD):
+  - Estimated total: <number>
+  - Breakdown:
+    - Lodging: <number>
+    - Food: <number>
+    - Transport: <number>
+    - Activities: <number>
+    - Other: <number>
+  - Budget notes:
+    - <key assumption or constraint>
+  - Provided budget: <number or none>
+  - Budget status: <within / over / under> by <number>
 
-Day 4:
-- activity 1
-- activity 2
+3) Formatting rules:
+- Do NOT repeat labels like Time, Cost, or Location unless they add value.
+- Use time ranges only for transport or fixed-entry activities.
+- Do NOT include 'Cost: 0.00' for free activities.
+- Avoid 'TBD' unless timing is truly critical and unknown.
+- Group minor transport and snacks implicitly unless notable.
 
-Day 5:
-- activity 1
-- activity 2
+4) Currency rules:
+- All monetary values must be numeric USD (e.g., 25 or 25.00).
+- No currency symbols.
+- Unknown values should be omitted rather than shown as null.
 
-Rules:
-- Use bullet points only
-- Do NOT include JSON
-- Do NOT include explanations
-- Do NOT include thoughts, actions, or tool traces
-- Output ONLY the day-wise plan
+5) Missing required inputs:
+- If destination or dates are missing, output ONE bullet asking for clarification and nothing else.
 
-IMPORTANT:
-Do NOT include thoughts, actions, or tool traces in the final answer.
-Only return the final travel plan.
+6) Style guidance:
+- Prioritize readability over precision.
+- This should read like a real travel itinerary, not a database export.
+- Keep bullets short and human-friendly.
 
+IMPORTANT: Output nothing except the bullet points described above.
 """
