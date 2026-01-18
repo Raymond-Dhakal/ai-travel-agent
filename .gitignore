@@ -1,0 +1,6 @@
+venv/
+aiAgentEnv/
+__pycache__/
+*.pyc
+.env
+.env.*
